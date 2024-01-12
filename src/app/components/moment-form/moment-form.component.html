@@ -1,0 +1,47 @@
+<h2>Formulario Básico em Angular</h2>
+<form (ngSubmit)="submit()" [formGroup]="momentForm" #formDir="ngForm">
+  <div class="form-group">
+    <label for="nome">Nome:</label>
+    <input
+      type="text"
+      placeholder="Seu nome completo"
+      formControlName="nome"
+      required
+    />
+    <div *ngIf="nome.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="nome.errors?.['required']">O nome é obrigatorio</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="tel">Telefone</label>
+    <input
+      type="tel"
+      placeholder="Seu telefone com DDD"
+      formControlName="tel"
+      required
+    />
+    <div *ngIf="tel.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="tel.errors?.['required']">O telefone é obrigatorio</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-mail:</label>
+    <input
+      type="email"
+      placeholder="Seu melhor e-mail"
+      formControlName="email"
+      required
+    />
+    <div *ngIf="email.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="email.errors?.['required']">O e-mail é obrigatorio</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Mensagem:</label>
+    <textarea type="text"></textarea>
+  </div>
+  <input type="submit" value="{{ btnText }}" />
+</form>
